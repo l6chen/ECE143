@@ -23,8 +23,7 @@ Rough outline and placeholder of our plan for the data inspection and visualizat
 **Visualization**:
 - 2D Scatter Plot
     - X Axis: Time intervals
-    - Y Axis: Reason for stop
-    - One point indicates one stop
+    - Y Axis: likelihood of search for stop
 
 ### Race and likelihood of arrest correlation:
 **Data**:
@@ -40,9 +39,9 @@ Rough outline and placeholder of our plan for the data inspection and visualizat
 **Data**:
 - Age
     - Age 'buckets' or intervals to be defined
-- Reason for stop
+- Gender
 
 **Visualization**:
 - 2D Bar Chart
     - X Axis: Age Bucket
-    - Y Axis: Amount of stops. Within each bar separate the different causes for the stops.
+    - Y Axis: Gender of stop subject. Within each bar separate the different causes for the stops.
