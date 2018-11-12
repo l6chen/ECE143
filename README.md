@@ -18,7 +18,7 @@ Rough outline and placeholder of our plan for the data inspection and visualizat
 - Timestamp
     - Time 'buckets' or intervals to be defined
 - Number of stops per time interval
-- Reason for stop
+- Searched vs not searched for stop
 
 **Visualization**:
 - 2D Scatter Plot
@@ -36,7 +36,7 @@ Rough outline and placeholder of our plan for the data inspection and visualizat
     - X Axis: Race
     - Y Axis: Likelihood of arrest (# of arrests / # of all stops per race)
 
-### Age and cause of stop correlation
+### Age and arrest correlation
 **Data**:
 - Age
     - Age 'buckets' or intervals to be defined
