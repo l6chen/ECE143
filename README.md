@@ -18,12 +18,12 @@ Rough outline and placeholder of our plan for the data inspection and visualizat
 - Timestamp
     - Time 'buckets' or intervals to be defined
 - Number of stops per time interval
-- Searched vs not searched for stop
+- The result of the stops (they were arrested or just verbally warned)
 
 **Visualization**:
 - 2D Scatter Plot
     - X Axis: Time intervals
-    - Y Axis: likelihood of search for stop
+    - Y Axis: The result of thoses stops
 
 ### Race and likelihood of arrest correlation:
 **Data**:
