@@ -39,11 +39,13 @@ def cleandata(ori):
         print(f'Processed {line_count} lines.')
         print(f'{empty_arrest_rows_count} emty lines.')#clean data
     return cleaned
+
 def read_data(cleaned):
     assert isinstance(cleaned,str)
     
     dataset = pd.read_csv(cleaned)
     return dataset
+
 def create_data(mode='ratio'):
     
     #assert isinstance(dataset,pd.core.frame.DataFrame)
@@ -105,30 +107,7 @@ def create_data(mode='ratio'):
         return male_stopped_array, female_stopped_array
     elif mode == 'searched':
         return male_searched_array, female_searched_array
-
-def plot_data(pic='ratio'):
-    cleanedcsv = cleandata('./datasets/vehicle_stops_2016_datasd_original.csv')
-    dataset = read_data(cleanedcsv)
-    male_stopped_array, female_stopped_array = create_data(dataset,mode='stopped')
-    male_searched_array, female_searched_array = create_data(dataset,mode='searched')
-    male_ratio_array, female_ratio_array = create_data(dataset,mode='ratio')
-    if pic == 'ratio':
-        return male_ratio_array, female_ratio_array
-    elif pic == 'stopped':
-        return male_stopped_array, female_stopped_array
-    elif pic == 'searched':
-        return male_searched_array, female_searched_array
     
-if (__name__ == "__main__"):
-    male_ratio_array, female_ratio_array = plot_data(pic='ratio')
-    fig,ax=subplots()
-    ax.plot(male_ratio_array[0],male_ratio_array[1],female_ratio_array[0],female_ratio_array[1])#all data
-    ax.plot(male_ratio_array[0],len(male_ratio_array[0]+1)*[np.mean(male_ratio_array[1])],\
-    female_ratio_array[0],len(female_ratio_array[0]+1)*[np.mean(female_ratio_array[1])],linestyle="--")
-    ax.legend(('Male','Female','Mean of Male','Mean of Female'),loc='best')
-    plt.xlabel('Age')
-    plt.ylabel('Searched Times/Stop Times')
-else:
-    cleanedcsv = cleandata('./datasets/vehicle_stops_2016_datasd_original.csv')
-    dataset = read_data(cleanedcsv)
+cleanedcsv = cleandata('./datasets/vehicle_stops_2016_datasd_original.csv')
+dataset = read_data(cleanedcsv)
 
