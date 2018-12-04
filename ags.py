@@ -128,3 +128,7 @@ if (__name__ == "__main__"):
     ax.legend(('Male','Female','Mean of Male','Mean of Female'),loc='best')
     plt.xlabel('Age')
     plt.ylabel('Searched Times/Stop Times')
+else:
+    cleanedcsv = cleandata('./datasets/vehicle_stops_2016_datasd_original.csv')
+    dataset = read_data(cleanedcsv)
+
