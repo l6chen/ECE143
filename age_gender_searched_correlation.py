@@ -2,6 +2,9 @@ import csv
 import pandas as pd
 import numpy as np
 from collections import defaultdict
+from matplotlib.pylab import subplots
+import matplotlib.pyplot as plt
+
 def cleandata(ori):
     '''
     This function is intended to clean the bad data(like "no data/unknow/NaN") for later processing.
@@ -47,6 +50,9 @@ def create_data(dataset,mode='ratio'):
     assert isinstance(mode,str) and (mode == 'ratio' or mode =='stopped' or mode == 'searched' )
     
     #create stopped dataset
+    male_stopped = defaultdict(int)
+    female_stopped = defaultdict(int)
+    
     for i in range(len(dataset['subject_age'])):#count stopped times
         if dataset['subject_sex'][i] == 'M':
             male_stopped[dataset['subject_age'][i]] += 1
@@ -76,9 +82,6 @@ def create_data(dataset,mode='ratio'):
 
     male_searched_array = np.transpose(np.array(male_searched_sort))#change to numpy for plot
     female_searched_array = np.transpose(np.array(female_searched_sort))
-    
-    male_stopped = defaultdict(int)
-    female_stopped = defaultdict(int)
 
     #create searched/stopped dataset
     male_ratio = defaultdict(int)
