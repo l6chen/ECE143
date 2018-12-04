@@ -44,7 +44,7 @@ def read_data(cleaned):
     
     dataset = pd.read_csv(cleaned)
     return dataset
-def create_data(dataset,mode='ratio'):
+def create_data(mode='ratio'):
     
     assert isinstance(dataset,pd.core.frame.DataFrame)
     assert isinstance(mode,str) and (mode == 'ratio' or mode =='stopped' or mode == 'searched' )
