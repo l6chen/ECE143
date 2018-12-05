@@ -8,7 +8,7 @@ import pandas as pd
 from matplotlib import font_manager as fm
 import matplotlib.pyplot as plt
 
-ALL=pd.read_csv('vehicle_stops_2016_datasd.csv')
+ALL=pd.read_csv('./datasets/vehicle_stops_2016_datasd.csv')
 data=pd.DataFrame({'stop_id':ALL['stop_id'],'subject_race':ALL['subject_race'],'timestamp':ALL['timestamp'],'arrested':ALL['arrested']});
 race=list(data['subject_race'])
 race=list(set(race))
