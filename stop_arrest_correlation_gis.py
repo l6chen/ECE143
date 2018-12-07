@@ -5,6 +5,12 @@ import geopandas
 
 pd.options.display.max_rows = 10
 
+## TODO: Docstrings
+
+# To do : encapsulate functions to do:
+# gather arrest and stop data
+# combine that data with location
+
 def create_data():
     divisions = geopandas.read_file("zip://./datasets/pd_divisions_datasd.zip")
     beats = geopandas.read_file("zip://./datasets/pd_beats_datasd.zip")
@@ -74,4 +80,5 @@ def plot_arrest_map():
     ax.set_axis_off()
 
 if (__name__ == "__main__"):
-    create_data()
+    plot_stop_map()
+    plot_arrest_map()
