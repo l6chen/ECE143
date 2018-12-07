@@ -105,6 +105,33 @@ def TimeInterval_StopNumber():
     f.close()
     return data
 
+
+def plot_TimeInterval_StopNumber(data):
+    columns = ['0-1', '1-2', '2-3', '3-4', '4-5', '5-6', '6-7', '7-8', '8-9', '9-10', '10-11', '11-12', '12-13',
+               '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21', '21-22', '22-23', '23-00']
+    rows = ["Citation", "Verbal Warning", "Written Warning", "Searched", "Field Interview", "Arrested", "Other"]
+
+    values = np.arange(0, 10000, 1000)
+    value_incr = 1
+    colors = plt.cm.tab20b(np.linspace(0, 1, len(rows)))
+    index = np.arange(len(columns))
+    bar_width = 0.8
+    y_offset = np.zeros(len(columns))
+
+    for row in range(len(data)):
+        plt.bar(index, data[row], bar_width, bottom=y_offset, color=colors[row], label=rows[row])
+        y_offset = y_offset + data[row]
+
+    plt.ylabel("number of stops", fontsize=16)
+    plt.xlabel("time interval", fontsize=16)
+    plt.yticks(values * value_incr, ['%d' % val for val in values])
+    plt.xticks(index, columns, fontsize=10)
+    plt.title('Stopped number VS time', fontsize=16)
+    plt.legend(prop={'size': 16})
+    fig = plt.gcf()
+    fig.set_size_inches(16, 9)
+
+
 def TimeInterval_ResultRatio():
     '''
     get the outcome ratio of the total stop number in certain time interval
@@ -119,8 +146,24 @@ def TimeInterval_ResultRatio():
     for i in range(len(data_ratio)):
         for j in range(len(data_ratio[0])):
             data_ratio[i][j] = data[i][j] / number[j]
-
     return data_ratio
+
+def plot_TimeInterval_ResultRatio(data_ratio):
+    columns = ['0-1', '1-2', '2-3', '3-4', '4-5', '5-6', '6-7', '7-8', '8-9', '9-10', '10-11', '11-12', '12-13',
+               '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21', '21-22', '22-23', '23-00']
+    rows = ["Citation", "Verbal Warning", "Written Warning", "Searched", "Field Interview", "Arrested", "Other"]
+    colors = plt.cm.tab20b(np.linspace(0, 1, len(rows)))
+    index = np.arange(len(columns))
+    for row in range(len(data_ratio)):
+        plt.plot(index, data_ratio[row], lw=3, color=colors[row], label=rows[row])
+
+    plt.ylabel("result ratio", fontsize=16)
+    plt.xlabel("time interval", fontsize=16)
+    plt.xticks(index, columns, fontsize=10)
+    plt.title('result ratio VS time', fontsize=16)
+    plt.legend(prop={'size': 16})
+    fig = plt.gcf()
+    fig.set_size_inches(16, 9)
 
 
 def month_StopNumber():
@@ -143,7 +186,6 @@ def month_StopNumber():
     data = [i for i in month_number.values()]
     return data
 
-
 def get_month(month):
     '''
     return the string name of the day of the month on a given month,day, and year.
@@ -151,6 +193,19 @@ def get_month(month):
     '''
     month_number = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep","Oct", "Nov", "Dec"]
     return month_number[month-1]
+
+
+def plot_month_StopNumber(data):
+    columns = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    index = np.arange(len(columns))
+    plt.plot(index, data, lw=4, color=plt.cm.tab20b(2), label=columns)
+    plt.ylabel("number of stops", fontsize=16)
+    plt.ylim((7000, 11000))
+    plt.xlabel("month", fontsize=16)
+    plt.xticks(index, columns, fontsize=10)
+    plt.title('Stopped number VS Month', fontsize=16)
+    fig = plt.gcf()
+    fig.set_size_inches(16, 6)
 
 def week_StopNumber():
     '''
@@ -170,6 +225,7 @@ def week_StopNumber():
     data = [i for i in week_number.values()]
     return data
 
+
 def get_day_of_week(year,month,day):
     '''
     return the string name (e.g., Monday, Tuesday) of the day of the week on a given month,day, and year.
@@ -179,3 +235,15 @@ def get_day_of_week(year,month,day):
     '''
     week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri','Sat', 'Sun']
     return week[calendar.weekday(year, month, day)]
+
+
+def plot_week_StopNumber(data):
+    columns = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    index = np.arange(len(columns))
+    plt.plot(index, data, lw=4, color=plt.cm.tab20b(2), label=columns)
+    plt.ylabel("number of stops", fontsize=16)
+    plt.xlabel("week", fontsize=16)
+    plt.xticks(index, columns, fontsize=10)
+    plt.title('Stopped number VS week', fontsize=16)
+    fig = plt.gcf()
+    fig.set_size_inches(16, 9)
