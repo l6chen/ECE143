@@ -13,7 +13,7 @@ def plot(chart, zoom = 'n'):
     if chart == 'stopped':
         male_stopped_array, female_stopped_array = create_data(mode='stopped')
         fig,ax=subplots()
-        ax.plot(male_stopped_array[0],male_stopped_array[1],female_stopped_array[0],female_stopped_array[1])
+        ax.scatter(male_stopped_array[0],male_stopped_array[1],female_stopped_array[0],female_stopped_array[1],s=150)
         ax.legend(('Male','Female'),loc='best',prop={'size':24})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Stopped Times',fontsize=16)
@@ -23,7 +23,7 @@ def plot(chart, zoom = 'n'):
     elif chart == 'searched':
         male_searched_array, female_searched_array = create_data(mode='searched')
         fig,ax=subplots()
-        ax.plot(male_searched_array[0],male_searched_array[1],female_searched_array[0],female_searched_array[1])
+        ax.scatter(male_searched_array[0],male_searched_array[1],female_searched_array[0],female_searched_array[1],s=150)
         ax.legend(('Male','Female'),loc='best',prop={'size':24})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Searched Times',fontsize=16)
@@ -34,9 +34,9 @@ def plot(chart, zoom = 'n'):
         male_ratio_array, female_ratio_array = create_data(mode='ratio')
         fig,ax=subplots()
         if zoom == 'y':
-            ax.plot(male_ratio_array[0][1:-1],male_ratio_array[1][1:-1],female_ratio_array[0],female_ratio_array[1])
+            ax.plot(male_ratio_array[0][1:-1],male_ratio_array[1][1:-1],female_ratio_array[0],female_ratio_array[1],lw=4)
         else:
-            ax.plot(male_ratio_array[0],male_ratio_array[1],female_ratio_array[0],female_ratio_array[1])
+            ax.plot(male_ratio_array[0],male_ratio_array[1],female_ratio_array[0],female_ratio_array[1],lw=4)
         ax.plot(male_ratio_array[0],len(male_ratio_array[0]+1)*[np.mean(male_ratio_array[1])],\
         female_ratio_array[0],len(female_ratio_array[0]+1)*[np.mean(female_ratio_array[1])],linestyle="--")
         ax.legend(('Male','Female','Mean of Male','Mean of Female'),loc='best',prop={'size':20})
