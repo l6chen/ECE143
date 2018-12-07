@@ -8,13 +8,13 @@ import matplotlib.pyplot as plt
 
 def plot(chart, zoom = 'n'):
     '''
-    This function is intended to plot three different charts
+    This function is intended to plot three different charts.
+    Input
     '''
     if chart == 'stopped':
         male_stopped_array, female_stopped_array = create_data(mode='stopped')
-        datalen = len(male_stopped_array)
         fig,ax=subplots()
-        ax.scatter(male_stopped_array[0],male_stopped_array[1],female_stopped_array[0],female_stopped_array[1],s=[150]*datalen)
+        ax.plot(male_stopped_array[0],male_stopped_array[1],female_stopped_array[0],female_stopped_array[1],lw=4)
         ax.legend(('Male','Female'),loc='best',prop={'size':24})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Stopped Times',fontsize=16)
@@ -22,10 +22,9 @@ def plot(chart, zoom = 'n'):
         fig.set_size_inches(16, 9)
         
     elif chart == 'searched':
-        male_searched_array, female_searched_array = create_data(mode='searched')
-        datalen = len(male_searched_array)
+        male_searched_array, female_searched_array = create_data(mode='searched')    
         fig,ax=subplots()
-        ax.scatter(male_searched_array[0],male_searched_array[1],female_searched_array[0],female_searched_array[1],s=[150]*datalen)
+        ax.plot(male_searched_array[0],male_searched_array[1],female_searched_array[0],female_searched_array[1],lw=4)
         ax.legend(('Male','Female'),loc='best',prop={'size':24})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Searched Times',fontsize=16)
@@ -40,7 +39,7 @@ def plot(chart, zoom = 'n'):
         else:
             ax.plot(male_ratio_array[0],male_ratio_array[1],female_ratio_array[0],female_ratio_array[1],lw=4)
         ax.plot(male_ratio_array[0],len(male_ratio_array[0]+1)*[np.mean(male_ratio_array[1])],\
-        female_ratio_array[0],len(female_ratio_array[0]+1)*[np.mean(female_ratio_array[1])],linestyle="--")
+        female_ratio_array[0],len(female_ratio_array[0]+1)*[np.mean(female_ratio_array[1])],linestyle="--",lw=3)
         ax.legend(('Male','Female','Mean of Male','Mean of Female'),loc='best',prop={'size':20})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Searched Times/Stopped Times',fontsize=16)
