@@ -60,5 +60,18 @@ def create_data():
 
     return divsums_stop, divsums_arrest
 
+def plot_stop_map():
+    divsums_stop, divsums_arrest = create_data()
+    ax = divsums_stop.plot(column='arrested', figsize=(30, 12), cmap='OrRd', legend=True)
+    divsums_stop.apply(lambda x: ax.annotate(s=x.div_name.capitalize(), xy=x.geometry.centroid.coords[0], ha='center'),axis=1)
+    ax.set_axis_off()
+    
+
+def plot_arrest_map():
+    divsums_stop, divsums_arrest = create_data()
+    ax = divsums_arrest.plot(column='arrested', figsize=(30, 12), cmap='OrRd', legend=True)
+    divsums_stop.apply(lambda x: ax.annotate(s=x.div_name.capitalize(), xy=x.geometry.centroid.coords[0], ha='center'),axis=1)
+    ax.set_axis_off()
+
 if (__name__ == "__main__"):
     create_data()
