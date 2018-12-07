@@ -6,9 +6,6 @@ from matplotlib.pylab import subplots
 import matplotlib.pyplot as plt
 
 
-cleanedcsv = cleandata('./datasets/vehicle_stops_2016_datasd_original.csv')#clean the dataset and write it in a new csv file
-dataset = read_data(cleanedcsv)#read the cleaned dataset as dataframe
-
 def plot(chart, zoom = 'n'):
     '''
     This function is intended to plot three different charts
@@ -151,7 +148,9 @@ def create_data(mode='ratio'):
         return male_stopped_array, female_stopped_array
     elif mode == 'searched':
         return male_searched_array, female_searched_array
-
+    
+cleanedcsv = cleandata('./datasets/vehicle_stops_2016_datasd_original.csv')#clean the dataset and write it in a new csv file
+dataset = read_data(cleanedcsv)#read the cleaned dataset as dataframe
 
     
 
