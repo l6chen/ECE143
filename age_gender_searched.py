@@ -12,8 +12,9 @@ def plot(chart, zoom = 'n'):
     '''
     if chart == 'stopped':
         male_stopped_array, female_stopped_array = create_data(mode='stopped')
+        datalen = len(male_stopped_array)
         fig,ax=subplots()
-        ax.scatter(male_stopped_array[0],male_stopped_array[1],female_stopped_array[0],female_stopped_array[1],s=150)
+        ax.scatter(male_stopped_array[0],male_stopped_array[1],female_stopped_array[0],female_stopped_array[1],s=[150]*datalen)
         ax.legend(('Male','Female'),loc='best',prop={'size':24})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Stopped Times',fontsize=16)
@@ -22,8 +23,9 @@ def plot(chart, zoom = 'n'):
         
     elif chart == 'searched':
         male_searched_array, female_searched_array = create_data(mode='searched')
+        datalen = len(male_searched_array)
         fig,ax=subplots()
-        ax.scatter(male_searched_array[0],male_searched_array[1],female_searched_array[0],female_searched_array[1],s=150)
+        ax.scatter(male_searched_array[0],male_searched_array[1],female_searched_array[0],female_searched_array[1],s=[150]*datalen)
         ax.legend(('Male','Female'),loc='best',prop={'size':24})
         plt.xlabel('Age',fontsize=16)
         plt.ylabel('Searched Times',fontsize=16)
