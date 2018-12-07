@@ -7,14 +7,14 @@
 import pandas as pd
 from matplotlib import font_manager as fm
 import matplotlib.pyplot as plt
-
-ALL=pd.read_csv('./datasets/vehicle_stops_2016_datasd.csv')
+#read data from datasets
+ALL=pd.read_csv('./datasets/vehicle_stops_2016_datasd.csv')      
 data=pd.DataFrame({'stop_id':ALL['stop_id'],'subject_race':ALL['subject_race'],'timestamp':ALL['timestamp'],'arrested':ALL['arrested']});
 race=list(data['subject_race'])
-race=list(set(race))
+race=list(set(race))                        #get all the races
 arrest=data[(data['arrested']=='Y')]
 race_arrestdata=list(arrest['subject_race'])
-race_num=[]
+race_num=[]                                 #this is the arrested population of each race
 for i in race:
     race_num.append(race_arrestdata.count(i))
 racenum_arrest=dict(zip(race,race_num))
@@ -27,7 +27,7 @@ for k in arrest_pie.copy():
     if arrest_pie[k]<50:
         i=i+arrest_pie[k];
         del arrest_pie[k];
-arrest_pie['other']=i
+arrest_pie['other']=i                     # here we get the data we need to creat a pie chart of race distribution
 labels=['HISPANIC','WHITE','BLACK','OTHER']
 sizes=list(arrest_pie.values())
 
