@@ -1,7 +1,15 @@
 # ECE143
 ECE 143 Repository.
 
-Rough outline and placeholder of our plan for the data inspection and visualization project.
+# REQUIREMENTS
+
+Install using conda:
+- pandas
+- geopandas
+- matplotlib
+- numpy
+
+## Rough outline and placeholder of our plan for the data inspection and visualization project.
 
 ## Applications
 
